@@ -1,0 +1,53 @@
+{
+  "route": "discuss",
+  "startedAt": "2026-11-09T12:33:44.056Z",
+  "version": 1,
+  "foundation": {
+    "purpose": "Plan a small cafe's weekly shifts, show each person their own shifts, and handle swap requests.",
+    "scope": "full-stack",
+    "stage": "poc",
+    "traffic": "One manager and eight staff, mostly on phones, a few times a day.",
+    "data": "People (manager or staff), weeks (draft or published), shifts (day, start, end, person), swap requests (shift, from, to, status)."
+  },
+  "confirmedAt": "2026-11-09T12:33:44.069Z",
+  "path": "small-poc",
+  "targetMode": "functional_prototype",
+  "pathChosenAt": "2026-11-09T12:33:44.071Z",
+  "pathRecommended": {
+    "pathId": "small-poc",
+    "because": "This path matches your confirmed application scope and stage. Pick another one to change it."
+  },
+  "visualReview": {
+    "pages": [
+      {
+        "name": "Sign in",
+        "purpose": "Manager and staff sign in; a staff member changes their starting password the first time.",
+        "layout": "form"
+      },
+      {
+        "name": "Plan the week",
+        "purpose": "The manager adds shifts for a week and publishes it.",
+        "layout": "table"
+      },
+      {
+        "name": "Staff",
+        "purpose": "The manager adds and removes staff members.",
+        "layout": "table"
+      },
+      {
+        "name": "My shifts",
+        "purpose": "A staff member's own published shifts, soonest first, with a button to ask for a swap.",
+        "layout": "cards"
+      },
+      {
+        "name": "Swap requests",
+        "purpose": "The manager approves or turns down swap requests.",
+        "layout": "table"
+      }
+    ],
+    "approvedAt": "2026-11-09T12:33:44.119Z",
+    "ideaHash": "540640b14858ffe652f7ce35476faa829e033b4d02f0446968609df113ae8534",
+    "planHash": "be04dd5fda54fe8b6154a956c35fe36105e2df7fef9c7b50f6a9b40713bf47aa"
+  },
+  "builtAt": "2026-11-09T12:33:44.453Z"
+}

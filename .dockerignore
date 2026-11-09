@@ -1,0 +1,18 @@
+# Never sent into the build. The bundle planner refuses secrets before upload
+# (packages/hosting/src/bundle.ts); this is the second line, for anything that
+# reaches the build by another route.
+.env
+.env.*
+!.env.example
+node_modules
+.next
+.next-checks
+.next-build
+out
+dist
+*.tsbuildinfo
+.git
+e2e
+playwright.config.ts
+test-results
+playwright-report

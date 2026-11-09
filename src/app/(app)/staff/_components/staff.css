@@ -1,0 +1,98 @@
+/* DESIGN.md section 3, Staff. Only theme variables: no colour, radius or step by hand. */
+
+.staff-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--space) * 3);
+  margin-bottom: calc(var(--space) * 4);
+}
+
+.staff-head h1 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.staff-empty {
+  display: grid;
+  justify-items: start;
+  gap: calc(var(--space) * 3);
+  padding: calc(var(--space) * 4);
+  margin-bottom: calc(var(--space) * 4);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.staff-empty p,
+.staff-state p {
+  margin: 0;
+}
+
+.staff-state {
+  display: grid;
+  justify-items: start;
+  gap: calc(var(--space) * 3);
+}
+
+.staff-table {
+  overflow-x: auto;
+}
+
+/* Long names and emails end in an ellipsis; the full text is in the title. */
+.staff-truncate {
+  display: block;
+  max-width: 18rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.staff-you {
+  color: var(--muted);
+}
+
+.staff-form {
+  display: grid;
+  gap: calc(var(--space) * 4);
+}
+
+.staff-field {
+  display: grid;
+  gap: calc(var(--space) * 1);
+}
+
+.staff-field input {
+  font: inherit;
+  padding: calc(var(--space) * 2) calc(var(--space) * 3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.staff-field input:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.staff-field input[aria-invalid='true'] {
+  border-color: var(--danger-fg);
+  border-width: 2px;
+}
+
+.staff-hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.875em;
+}
+
+.staff-error {
+  margin: 0;
+  padding: calc(var(--space) * 2) calc(var(--space) * 3);
+  border-radius: var(--radius);
+  background: var(--danger);
+  color: var(--danger-fg);
+  font-size: 0.875em;
+}

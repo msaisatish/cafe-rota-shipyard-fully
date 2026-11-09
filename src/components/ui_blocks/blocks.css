@@ -1,0 +1,292 @@
+/*
+ * How the blocks look.
+ *
+ * Every colour here is a token. There is not one hex code in this file, and the
+ * contract test asserts it: a block that types a colour in escapes the theme,
+ * ignores dark mode, and slips past the contrast repair in `safeTokens` — which
+ * only ever sees values that came through the tokens. One hard-coded grey is
+ * how an app ends up unreadable for exactly the people the repair is for.
+ *
+ * **One exception, named rather than hidden:** `--blk-scrim`, the dimming
+ * behind a dialog. The palette has no token for "the page, but darker", and
+ * deriving it from `--fg` gives a white veil in dark mode. So it is declared
+ * once, in one place, with a name — which is the part that matters. It sits
+ * behind the dialog and nothing is ever read against it.
+ *
+ * The layout is plain CSS, deliberately. The project has no Tailwind, no
+ * styling library and no build plugin, and nothing here adds one.
+ */
+
+/* ------------------------------------------------------------------ the frame */
+
+.blk-skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  padding: calc(var(--space) * 2) calc(var(--space) * 4);
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-radius: var(--radius);
+  z-index: 100;
+}
+
+/*
+ * Visible the moment it is focused, and not before. The version that is always
+ * hidden is the version that is never tested and never works.
+ */
+.blk-skip:focus {
+  left: calc(var(--space) * 2);
+  top: calc(var(--space) * 2);
+}
+
+.blk-shell {
+  display: grid;
+  /* minmax(0, 1fr), not 1fr: a plain 1fr column never shrinks below its
+   * widest content, so a wide table pushed Approve, Log time and Sign out off
+   * the right edge at laptop width (Time Tracker, 2026-10-28). */
+  grid-template-columns: 15rem minmax(0, 1fr);
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+@media (max-width: 48rem) {
+  .blk-shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.blk-shell-nav {
+  border-right: 1px solid var(--line);
+  background: var(--surface);
+  padding: calc(var(--space) * 4);
+}
+
+.blk-shell-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: calc(var(--space) * 1);
+}
+
+.blk-shell-main {
+  min-width: 0;
+  padding: calc(var(--space) * 6);
+}
+
+.blk-nav-link {
+  display: block;
+  padding: calc(var(--space) * 2) calc(var(--space) * 3);
+  border-radius: var(--radius);
+  color: var(--fg);
+  text-decoration: none;
+  border-left: 3px solid transparent;
+}
+
+.blk-nav-link:hover {
+  background: var(--bg);
+}
+
+/*
+ * The current page is marked three ways: a background, a weight and a bar. The
+ * attribute that actually carries the meaning is `aria-current="page"`, set in
+ * `blocks.ts` — this is decoration for people who can see it.
+ */
+.blk-nav-link.is-current {
+  background: var(--bg);
+  border-left-color: var(--accent);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------- forms */
+
+.blk-form {
+  display: grid;
+  gap: calc(var(--space) * 4);
+  max-width: 24rem;
+}
+
+.blk-field {
+  display: grid;
+  gap: calc(var(--space) * 1);
+}
+
+.blk-field input {
+  font: inherit;
+  padding: calc(var(--space) * 2) calc(var(--space) * 3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/*
+ * The invalid state is a border colour *and* the message underneath, which is
+ * attached with `aria-describedby`. The border on its own says nothing to
+ * anybody who cannot see it, and nothing to anybody who cannot tell this red
+ * from the ordinary grey.
+ */
+.blk-field input[aria-invalid='true'] {
+  border-color: var(--danger-fg);
+  border-width: 2px;
+}
+
+.blk-field-error,
+.blk-form-notice {
+  color: var(--danger-fg);
+  background: var(--danger);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 2) calc(var(--space) * 3);
+  font-size: 0.9em;
+}
+
+/* ---------------------------------------------------------------------- stats */
+
+.blk-stat-grid {
+  display: grid;
+  gap: calc(var(--space) * 4);
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  margin: 0;
+}
+
+.blk-stat {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 4);
+  background: var(--surface);
+}
+
+.blk-stat dt {
+  color: var(--muted);
+  font-size: 0.85em;
+}
+
+.blk-stat-value {
+  font-size: 1.75rem;
+  margin: calc(var(--space) * 1) 0 0;
+}
+
+.blk-stat-caption {
+  color: var(--muted);
+  font-size: 0.8em;
+}
+
+.blk-stat-change {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--space) * 1);
+  font-size: 0.8em;
+  border-radius: var(--radius);
+  padding: 0 calc(var(--space) * 1);
+}
+
+.blk-stat-change[data-tone='ok'] {
+  background: var(--ok);
+  color: var(--ok-fg);
+}
+
+.blk-stat-change[data-tone='warn'] {
+  background: var(--warn);
+  color: var(--warn-fg);
+}
+
+.blk-stat-change[data-tone='neutral'] {
+  background: var(--surface);
+  color: var(--muted);
+}
+
+/* -------------------------------------------------------------------- dialogs */
+
+.blk-backdrop {
+  /* The one colour in this file that is not a palette token. See the header. */
+  --blk-scrim: rgb(0 0 0 / 45%);
+
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: calc(var(--space) * 4);
+  background: var(--blk-scrim);
+}
+
+.blk-dialog {
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 6);
+  max-width: 30rem;
+  width: 100%;
+}
+
+.blk-dialog-actions {
+  display: flex;
+  gap: calc(var(--space) * 2);
+  justify-content: flex-end;
+  margin-top: calc(var(--space) * 5);
+}
+
+/* ------------------------------------------------------------------- messages */
+
+.blk-toasts {
+  position: fixed;
+  bottom: calc(var(--space) * 4);
+  right: calc(var(--space) * 4);
+  display: grid;
+  gap: calc(var(--space) * 2);
+  max-width: 24rem;
+  z-index: 50;
+}
+
+.blk-toast {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(var(--space) * 3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 3) calc(var(--space) * 4);
+  background: var(--surface);
+  color: var(--fg);
+  transform: translateY(0);
+}
+
+.blk-toast[data-tone='ok'] {
+  background: var(--ok);
+  color: var(--ok-fg);
+}
+
+.blk-toast[data-tone='warn'] {
+  background: var(--warn);
+  color: var(--warn-fg);
+}
+
+.blk-toast[data-tone='danger'] {
+  background: var(--danger);
+  color: var(--danger-fg);
+}
+
+/*
+ * Belt and braces. `ui_foundation` already reduces every transition to nothing
+ * under this preference, so a slide would land instantly anyway. This states it
+ * for the one property that would otherwise still be applied, and so that the
+ * rule is visible in the file somebody reads when they wonder why.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .blk-toast {
+    transform: none;
+    transition: none;
+  }
+}
+
+/*
+ * Focus is never removed, only replaced. `outline: none` with nothing in its
+ * place is the single most common accessibility mistake in a stylesheet and it
+ * makes the whole application unusable without a mouse.
+ */
+.blk-shell :focus-visible,
+.blk-dialog :focus-visible,
+.blk-toast :focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}

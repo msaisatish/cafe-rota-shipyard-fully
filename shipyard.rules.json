@@ -1,0 +1,46 @@
+{
+  "contractVersion": 1,
+  "generatedAt": "2026-11-09T12:33:44.409Z",
+  "applicable": [
+    {
+      "ruleId": "escalation.repeated_fix_failure",
+      "version": 1,
+      "severity": "warning",
+      "message": "The same problem has come back after two attempts to fix it. That usually means the cause is somewhere other than where it appears, and more attempts will cost more than a person looking at it once.",
+      "satisfied": false,
+      "missingGates": [
+        "no_repeated_fix_failures"
+      ]
+    },
+    {
+      "ruleId": "mode.functional_prototype.core_flow_works",
+      "version": 1,
+      "severity": "blocker",
+      "message": "The one thing this build is for is showing that the main journey works. Until it builds and that journey runs end to end, there is nothing to show.",
+      "satisfied": false,
+      "missingGates": [
+        "build_passes",
+        "core_flow_smoke_test"
+      ]
+    },
+    {
+      "ruleId": "security.imported_code.scanned",
+      "version": 1,
+      "severity": "warning",
+      "message": "Some of this code came from other people. It is worth knowing what it is allowed to be used for, and whether any of it has a known hole in it, before it is in front of anyone.",
+      "satisfied": false,
+      "missingGates": [
+        "dependency_scan_clean",
+        "license_scan_reviewed"
+      ]
+    }
+  ],
+  "blockers": [
+    "mode.functional_prototype.core_flow_works"
+  ],
+  "warnings": [
+    "escalation.repeated_fix_failure",
+    "security.imported_code.scanned"
+  ],
+  "humanReviewRequired": []
+}

@@ -1,0 +1,146 @@
+/*
+ * How the table looks. This file is yours.
+ *
+ * It exists so that installing the component gives you a table that already
+ * looks like part of an application, rather than a stack of unstyled rows you
+ * have to rescue before you can show anybody. Change any of it. Shipyard will
+ * never overwrite this file, including when data_table is upgraded.
+ *
+ * Every colour is a token from `ui_foundation`. There is not one hex code here
+ * and the contract test asserts it: a colour typed in directly escapes the
+ * theme, ignores dark mode, and slips past the contrast repair, which only ever
+ * sees values that came through the tokens.
+ *
+ * What is **not** here is any rule that changes behaviour. Sorting, filtering,
+ * paging and the announcements live in `table.ts`, which is protected. If you
+ * want a column to behave differently, say so rather than editing that file:
+ * it is replaced on upgrade and your change would go with it.
+ */
+
+.data-table {
+  display: grid;
+  gap: calc(var(--space) * 4);
+}
+
+/* -------------------------------------------------------------- the controls */
+
+.data-table-controls {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--space) * 3);
+  flex-wrap: wrap;
+}
+
+.data-table-controls label {
+  font-size: 0.875em;
+  color: var(--muted);
+}
+
+.data-table-controls input {
+  font: inherit;
+  padding: calc(var(--space) * 2) calc(var(--space) * 3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--fg);
+  min-width: 14rem;
+}
+
+/* ----------------------------------------------------------------- the grid */
+
+.data-table-grid {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/*
+ * The caption is read out before the contents, so it is the first thing
+ * somebody using a screen reader learns about the table. It is visible rather
+ * than hidden because a sighted reader benefits from it just as much.
+ */
+.data-table-grid caption {
+  text-align: left;
+  font-weight: 600;
+  margin-bottom: calc(var(--space) * 2);
+}
+
+.data-table-grid th {
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  padding: 0;
+}
+
+/*
+ * A real button inside the heading, filling it, so the whole heading is the
+ * target and it is reachable by keyboard without inventing a tabIndex.
+ */
+.data-table-sort {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--space) * 1);
+  width: 100%;
+  padding: calc(var(--space) * 2) calc(var(--space) * 2);
+  background: none;
+  border: 0;
+  font: inherit;
+  font-size: 0.75em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: left;
+  cursor: pointer;
+}
+
+.data-table-sort:hover {
+  color: var(--fg);
+}
+
+/* A column that cannot be sorted still has to line up with the ones that can. */
+.data-table-plain {
+  display: block;
+  padding: calc(var(--space) * 2) calc(var(--space) * 2);
+  font-size: 0.75em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.data-table-cell {
+  padding: calc(var(--space) * 2) calc(var(--space) * 2);
+  border-bottom: 1px solid var(--line);
+}
+
+.data-table-row:hover .data-table-cell {
+  background: var(--surface);
+}
+
+.data-table-empty {
+  padding: calc(var(--space) * 8) calc(var(--space) * 2);
+  text-align: center;
+  color: var(--muted);
+}
+
+/*
+ * Focus is replaced, never removed. `outline: none` with nothing in its place
+ * makes the table unusable without a mouse, which is the thing the sort button
+ * above exists to avoid.
+ */
+.data-table :focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/*
+ * On a narrow screen the table scrolls sideways rather than crushing every
+ * column to one character wide. `tabindex` is on the wrapper in the component
+ * so that a scrollable region is reachable by keyboard.
+ */
+@media (max-width: 40rem) {
+  .data-table-grid {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}

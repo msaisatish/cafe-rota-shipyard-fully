@@ -1,0 +1,239 @@
+{
+  "contractVersion": 1,
+  "generatedAt": "2026-11-09T12:33:44.409Z",
+  "phases": [
+    {
+      "title": "The first real feature",
+      "outcome": "One thing, finished properly: the screen first so you can see it, then everything behind it. It tells us the shape of the rest.",
+      "effort": "Depends on how big that one feature is",
+      "index": 1
+    },
+    {
+      "title": "The rest of the features",
+      "outcome": "Each one finished before the next one starts, so the app is never half-broken.",
+      "effort": "Depends on how many features there are",
+      "index": 2
+    },
+    {
+      "title": "Show it to someone",
+      "outcome": "A private link you can send. The information is real, and so is sign-in if your app has it, but nothing is backed up, so do not put anything in it you cannot lose.",
+      "effort": "Shipyard puts it online for you",
+      "index": 3
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "admin_dashboard",
+      "label": "A way for you to see what is going on",
+      "status": "deferred",
+      "reason": "Not needed for a working prototype. It becomes necessary at a pilot with real people.",
+      "components": [],
+      "gates": []
+    },
+    {
+      "id": "analytics",
+      "label": "Seeing how people use it",
+      "status": "optional",
+      "reason": "Worth having. Your project works without it.",
+      "components": [],
+      "gates": []
+    },
+    {
+      "id": "audit_logging",
+      "label": "A record of who did what",
+      "status": "deferred",
+      "reason": "Not needed for a working prototype. It becomes necessary at a pilot with real people.",
+      "components": [],
+      "gates": []
+    },
+    {
+      "id": "authentication",
+      "label": "Signing in",
+      "status": "deferred",
+      "reason": "Not needed for a working prototype. It becomes necessary at a pilot with real people.",
+      "components": [],
+      "gates": []
+    },
+    {
+      "id": "background_jobs",
+      "label": "Work that happens in the background",
+      "status": "optional",
+      "reason": "Worth having. Your project works without it.",
+      "components": [],
+      "gates": []
+    },
+    {
+      "id": "database_schema",
+      "label": "Somewhere to keep the information",
+      "status": "included",
+      "reason": "Needed because you are building a working prototype.",
+      "components": [
+        "postgres_schema"
+      ],
+      "gates": [
+        "database_persists_across_restart"
+      ]
+    },
+    {
+      "id": "deployment",
+      "label": "Somewhere for it to live on the internet",
+      "status": "deferred",
+      "reason": "Not needed for a working prototype. It becomes necessary at a pilot with real people.",
+      "components": [],
+      "gates": []
+    },
+    {
+      "id": "error_monitoring",
+      "label": "Finding out when it breaks",
+      "status": "deferred",
+      "reason": "Not needed for a working prototype. It becomes necessary at a pilot with real people.",
+      "components": [],
+      "gates": []
+    },
+    {
+      "id": "file_storage",
+      "label": "Letting people upload files",
+      "status": "optional",
+      "reason": "Worth having. Your project works without it.",
+      "components": [],
+      "gates": []
+    },
+    {
+      "id": "human_review_workflow",
+      "label": "A person checking the decisions",
+      "status": "optional",
+      "reason": "Worth having. Your project works without it.",
+      "components": [],
+      "gates": []
+    },
+    {
+      "id": "native_mobile",
+      "label": "An app in the App Store",
+      "status": "unsupported",
+      "reason": "Anycreo cannot build this yet. Shipyard builds web apps, which work on a phone browser. A real App Store app needs a different toolchain and a developer account.",
+      "components": [],
+      "gates": []
+    },
+    {
+      "id": "organization_tenancy",
+      "label": "Keeping customers separate",
+      "status": "deferred",
+      "reason": "Not needed for a working prototype. It becomes necessary at a pilot with real people.",
+      "components": [],
+      "gates": []
+    },
+    {
+      "id": "privacy_export_delete",
+      "label": "Handing someone their data back, or deleting it",
+      "status": "optional",
+      "reason": "Worth having. Your project works without it.",
+      "components": [],
+      "gates": []
+    },
+    {
+      "id": "realtime_voice",
+      "label": "Live voice or video",
+      "status": "unsupported",
+      "reason": "Anycreo cannot build this yet. This needs infrastructure Shipyard does not run yet. A scheduled call link from an existing tool is the usual stand-in.",
+      "components": [],
+      "gates": []
+    },
+    {
+      "id": "role_permissions",
+      "label": "Who is allowed to do what",
+      "status": "deferred",
+      "reason": "Not needed for a working prototype. It becomes necessary at a pilot with real people.",
+      "components": [],
+      "gates": []
+    },
+    {
+      "id": "subscription_payments",
+      "label": "Taking payment",
+      "status": "optional",
+      "reason": "Worth having. Your project works without it.",
+      "components": [],
+      "gates": []
+    },
+    {
+      "id": "transactional_email",
+      "label": "Emailing your users",
+      "status": "deferred",
+      "reason": "Not needed for a working prototype. It becomes necessary at a pilot with real people.",
+      "components": [],
+      "gates": []
+    },
+    {
+      "id": "uptime_monitoring",
+      "label": "Knowing it is still up",
+      "status": "deferred",
+      "reason": "Not needed for a working prototype. It becomes necessary at a product people pay for.",
+      "components": [],
+      "gates": []
+    }
+  ],
+  "deferred": [
+    "admin_dashboard",
+    "audit_logging",
+    "authentication",
+    "deployment",
+    "error_monitoring",
+    "organization_tenancy",
+    "role_permissions",
+    "transactional_email",
+    "uptime_monitoring"
+  ],
+  "unsupported": [
+    {
+      "id": "native_mobile",
+      "label": "An app in the App Store",
+      "reason": "Anycreo cannot build this yet. Shipyard builds web apps, which work on a phone browser. A real App Store app needs a different toolchain and a developer account."
+    },
+    {
+      "id": "realtime_voice",
+      "label": "Live voice or video",
+      "reason": "Anycreo cannot build this yet. This needs infrastructure Shipyard does not run yet. A scheduled call link from an existing tool is the usual stand-in."
+    }
+  ],
+  "installedComponents": [
+    {
+      "id": "postgres_schema",
+      "version": "1.0.1",
+      "installedAt": "2026-11-09T12:33:44.230Z"
+    },
+    {
+      "id": "auth",
+      "version": "1.2.1",
+      "installedAt": "2026-11-09T12:33:44.230Z"
+    },
+    {
+      "id": "transactional_email",
+      "version": "1.4.0",
+      "installedAt": "2026-11-09T12:33:44.230Z"
+    },
+    {
+      "id": "password_reset",
+      "version": "1.3.0",
+      "installedAt": "2026-11-09T12:33:44.230Z"
+    },
+    {
+      "id": "ui_foundation",
+      "version": "1.2.0",
+      "installedAt": "2026-11-09T12:33:44.230Z"
+    },
+    {
+      "id": "ui_blocks",
+      "version": "0.3.0",
+      "installedAt": "2026-11-09T12:33:44.230Z"
+    },
+    {
+      "id": "auth_screens",
+      "version": "1.2.1",
+      "installedAt": "2026-11-09T12:33:44.230Z"
+    },
+    {
+      "id": "data_table",
+      "version": "1.2.1",
+      "installedAt": "2026-11-09T12:33:44.380Z"
+    }
+  ]
+}

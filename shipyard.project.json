@@ -1,0 +1,25 @@
+{
+  "contractVersion": 1,
+  "generatedAt": "2026-11-09T12:33:44.409Z",
+  "projectId": "eval",
+  "name": "project",
+  "idea": "A café with eight part-time staff plans shifts in a group chat. Nobody is sure who is on when, swaps get agreed in private messages, and the manager finds out when somebody does not turn up.\n\nBuilt for one small café: the manager plans the week in a few minutes, staff see only their own shifts on their phone, and a swap is asked for and approved in the app, so the manager always knows who is really working.",
+  "targetMode": "functional_prototype",
+  "intent": {
+    "targetMode": "functional_prototype",
+    "regions": [],
+    "sensitiveData": false,
+    "payments": false,
+    "aiAffectsConsequentialDecision": false,
+    "humanReviewRequired": false,
+    "publicFacing": false,
+    "existingCodeSource": "new_project"
+  },
+  "stack": {
+    "framework": "Next.js",
+    "language": "TypeScript",
+    "database": "PostgreSQL",
+    "orm": "Prisma",
+    "tests": "Vitest"
+  }
+}

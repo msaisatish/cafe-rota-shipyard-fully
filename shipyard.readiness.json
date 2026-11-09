@@ -1,0 +1,19 @@
+{
+  "contractVersion": 1,
+  "generatedAt": "2026-11-09T12:33:44.409Z",
+  "score": 0,
+  "threshold": 40,
+  "targetMode": "functional_prototype",
+  "ready": false,
+  "scoredAgainst": "The whole production checklist, shown for reference. At this target mode readiness is decided by its blocking checks, not by this score; from a customer pilot up, the score must also reach the threshold.",
+  "decidedBy": "blockers",
+  "blockers": [
+    "The one thing this build is for is showing that the main journey works. Until it builds and that journey runs end to end, there is nothing to show."
+  ],
+  "nextActions": [
+    "The one thing this build is for is showing that the main journey works. Until it builds and that journey runs end to end, there is nothing to show.",
+    "Some of this code came from other people. It is worth knowing what it is allowed to be used for, and whether any of it has a known hole in it, before it is in front of anyone.",
+    "The same problem has come back after two attempts to fix it. That usually means the cause is somewhere other than where it appears, and more attempts will cost more than a person looking at it once."
+  ],
+  "evidenceCount": 0
+}

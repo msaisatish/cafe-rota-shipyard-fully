@@ -1,0 +1,176 @@
+// The database, as the code understands it.
+//
+// This file starts almost empty on purpose. Components add their own models to
+// it when they install — the installer appends fragments and refuses when a
+// model name is already taken, so two components cannot quietly disagree about
+// what a `User` is.
+//
+// Anything you add by hand goes at the bottom, under the marker. The installer
+// never writes above it.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// >>> shipyard:components — installed components add their models below this line
+
+// --- postgres_schema ---
+/// Small pieces of configuration the app needs to remember between restarts.
+/// Deliberately not a place for secrets — those live in the environment.
+model AppSetting {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+
+  @@map("app_settings")
+}
+
+// --- auth ---
+model User {
+  id                  String    @id @default(cuid())
+  email               String    @unique
+  name                String?
+  /// bcrypt hash. The plain password is never stored, logged or emailed.
+  passwordHash        String
+  emailVerifiedAt     DateTime?
+  /// Set when an account is suspended. Existing sessions stop working at once.
+  disabledAt          DateTime?
+  /// No longer read: failed sign-ins are counted per address in LoginAttempt
+  /// (auth 1.2.0). Kept so projects and parts that still set them keep working.
+  failedLoginAttempts Int       @default(0)
+  lockedUntil         DateTime?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  sessions Session[]
+
+  @@index([email])
+  @@map("users")
+}
+
+model Session {
+  id String @id @default(cuid())
+  /// SHA-256 of the cookie value. The value itself is never stored, so a
+  /// leaked backup does not contain usable sessions.
+  tokenHash String    @unique
+  userId    String
+  expiresAt DateTime
+  revokedAt DateTime?
+  userAgent String?
+  ip        String?
+  createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+  @@map("sessions")
+}
+
+/// Failed sign-ins per email address, whether or not an account has it, so a
+/// lock never tells an unknown address from a real one.
+model LoginAttempt {
+  /// SHA-256 of the normalised address. The address itself is not stored.
+  key         String    @id
+  failures    Int       @default(0)
+  lockedUntil DateTime?
+  updatedAt   DateTime  @updatedAt
+
+  @@map("login_attempts")
+}
+
+// --- password_reset ---
+/// A password reset in progress.
+///
+/// `userId` is a plain indexed string rather than a Prisma relation, because
+/// `User` belongs to the `auth` component and a relation would need a field on
+/// its side too. See ARCHITECTURE.md, "Never relate across components".
+model PasswordResetToken {
+  id String @id @default(cuid())
+  /// SHA-256 of the value in the emailed link. The value itself is never
+  /// stored, so a leaked backup contains no usable reset links.
+  tokenHash String    @unique
+  userId    String
+  expiresAt DateTime
+  /// Set the moment it is spent. A reset link works exactly once.
+  usedAt    DateTime?
+  /// Who asked. Kept for abuse investigation, not for analytics.
+  requestedIp String?
+  createdAt   DateTime @default(now())
+
+  @@index([userId])
+  @@index([expiresAt])
+  @@map("password_reset_tokens")
+}
+// <<< shipyard:components
+
+// Your own models go here.
+
+// One row per person on the café's staff list. userId points at the auth
+// component's User row (a plain id, never a relation: R4.5).
+model CafeMember {
+  id                 String    @id @default(cuid())
+  userId             String    @unique
+  name               String
+  role               String // "manager" | "staff"
+  mustChangePassword Boolean   @default(false)
+  removedAt          DateTime?
+  bootstrapKey       String?   @unique // "first-manager" on the first manager only
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  @@index([role, removedAt])
+  @@map("cafe_members")
+}
+
+// One rota week, made when the manager adds its first shift. Staff see its
+// shifts only once publishedAt is set.
+model RotaWeek {
+  id          String    @id @default(cuid())
+  weekStart   String    @unique // café-local Monday, "YYYY-MM-DD"
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  shifts      Shift[]
+
+  @@map("rota_weeks")
+}
+
+// One person working one stretch of one day. memberId is a CafeMember id.
+model Shift {
+  id        String   @id @default(cuid())
+  weekId    String
+  week      RotaWeek @relation(fields: [weekId], references: [id], onDelete: Cascade)
+  memberId  String // CafeMember.id
+  startsAt  DateTime // UTC
+  endsAt    DateTime // UTC
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  swaps     SwapRequest[]
+
+  @@index([weekId, startsAt])
+  @@index([memberId, startsAt])
+  @@map("shifts")
+}
+
+// A staff member asking for a colleague to take one of their shifts. The rota
+// changes only when the manager approves. Both member ids are CafeMember ids.
+model SwapRequest {
+  id           String    @id @default(cuid())
+  shiftId      String
+  shift        Shift     @relation(fields: [shiftId], references: [id], onDelete: Cascade)
+  fromMemberId String // CafeMember.id of the asker
+  toMemberId   String // CafeMember.id of the colleague
+  status       String    @default("waiting") // "waiting" | "approved" | "turned_down"
+  decidedAt    DateTime?
+  createdAt    DateTime  @default(now())
+
+  @@index([status, createdAt])
+  @@index([fromMemberId, createdAt])
+  @@index([shiftId, status])
+  @@map("swap_requests")
+}

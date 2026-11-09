@@ -1,0 +1,17 @@
+node_modules/
+.next/
+.next-checks/
+.next-build/
+out/
+dist/
+*.tsbuildinfo
+next-env.d.ts
+test-results/
+playwright-report/
+
+# Secret material. Never commit this.
+.env
+.env.local
+.env*.local
+
+.DS_Store

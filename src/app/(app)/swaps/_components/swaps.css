@@ -1,0 +1,50 @@
+/* DESIGN.md section 5, Swap requests. Only theme variables: no colour, radius or step by hand. */
+
+.swaps {
+  display: grid;
+  gap: calc(var(--space) * 4);
+  max-width: 60rem;
+}
+
+.swaps h1 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.swaps-empty {
+  margin: 0;
+  padding: calc(var(--space) * 4);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.swaps-state {
+  display: grid;
+  justify-items: start;
+  gap: calc(var(--space) * 3);
+}
+
+.swaps-state p {
+  margin: 0;
+}
+
+/* On a phone the table scrolls sideways in its own box. */
+.swaps-table {
+  overflow-x: auto;
+}
+
+.swaps-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--space) * 2);
+}
+
+.swaps-error {
+  margin: 0;
+  padding: calc(var(--space) * 2) calc(var(--space) * 3);
+  border-radius: var(--radius);
+  background: var(--danger);
+  color: var(--danger-fg);
+  font-size: 0.875em;
+}

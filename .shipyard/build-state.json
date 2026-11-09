@@ -1,0 +1,369 @@
+{
+  "version": 1,
+  "steps": [
+    {
+      "id": "design",
+      "title": "Design the app and plan how it is built",
+      "agent": "ui-designer",
+      "alsoBy": [
+        "architect"
+      ],
+      "gates": [
+        "design_blueprint_present"
+      ],
+      "needsAgent": true,
+      "stage": "build",
+      "message": "Use the ui-designer helper to complete DESIGN.md below the closing shipyard:design marker,\nfollowing the designing-the-interface skill: the scene, what this must not look like, the\ndetails and wording of each screen. It does not change the generated part, and writes no\nscreen code.\n\nThen use the architect helper. It already has IDEA.md, reads PROJECT.md, DESIGN.md and ARCHITECTURE.md, and\nplans the data and the screens on top of the installed parts and their seams, without\nrebuilding anything a part already does. It writes the plan into .shipyard/progress.md as the\n\"Next\" list, one line per step. No code in this step.",
+      "status": "done",
+      "agentSeen": "finished",
+      "results": {
+        "design_blueprint_present": {
+          "status": "passed",
+          "at": "2026-11-09T13:16:27.254Z",
+          "key": "b54d07e7bb2d7dc0e3aa9928d228390aa40799f851f508b76a3809bbf7d1a83b:design_blueprint_present:172e2957cf4f",
+          "ms": 3
+        }
+      },
+      "tasks": [
+        {
+          "task": "Complete DESIGN.md blueprint",
+          "state": "finished"
+        },
+        {
+          "task": "Plan data and screens",
+          "state": "finished"
+        }
+      ],
+      "workFrom": "6c2c8578634169dc34dda1e7ad595e388ba42b6f740ef26c437f34a1e4a6af81",
+      "worked": true,
+      "doneAt": "2026-11-09T13:16:27.254Z"
+    },
+    {
+      "id": "phase-1",
+      "title": "The first real feature",
+      "agent": "builder",
+      "alsoBy": [
+        "ui-designer"
+      ],
+      "gates": [
+        "typecheck_passes",
+        "unit_tests_pass",
+        "style_check_passes",
+        "pages_load"
+      ],
+      "needsAgent": true,
+      "stage": "build",
+      "message": "Phase 1 of 3: The first real feature\n\nOne thing, finished properly: the screen first so you can see it, then everything behind it. It tells us the shape of the rest.\n\nWhen this phase is finished, the person who owns this project should be able\nto open the app and see something that was not there before. Please work\ntowards that rather than towards a complete data model.\n\nThis is a working prototype: the main journey has to really work, end to\nend, on the real database, with real sign-in where the idea has one.\nSample rows to start from are fine; faking what the journey depends on is not.\nPolish, rare cases and nice-to-haves can wait.\n\nThis project already has these ready-made parts installed. Use them rather\nthan writing your own, and do not edit inside their folders:\n\n- **Signing in** — `src/components/auth`\n- **The screens people sign in on** — `src/components/auth_screens`\n- **A list people can sort and search** — `src/components/data_table`\n- **I forgot my password** — `src/components/password_reset`\n- **Database foundation** — `src/components/postgres_schema`\n- **Emailing your users** — `src/components/transactional_email`\n- **The screens every app starts with** — `src/components/ui_blocks`\n- **How the app looks** — `src/components/ui_foundation`\n\nIf one of them is genuinely wrong for what is being asked, say so rather than\nworking around it.\n\nLeave the app running at the end. If you cannot, say what is broken rather\nthan leaving it for the owner to discover.\n\nUse the builder helper for the code and the ui-designer helper for the screens, each screen\nagainst DESIGN.md.",
+      "status": "blocked",
+      "agentSeen": "finished",
+      "results": {
+        "typecheck_passes": {
+          "status": "passed",
+          "at": "2026-11-09T13:16:27.254Z",
+          "key": "b54d07e7bb2d7dc0e3aa9928d228390aa40799f851f508b76a3809bbf7d1a83b:typecheck_passes:7b87d722ef6a",
+          "ms": 2893
+        },
+        "unit_tests_pass": {
+          "status": "passed",
+          "at": "2026-11-09T13:16:27.254Z",
+          "key": "b54d07e7bb2d7dc0e3aa9928d228390aa40799f851f508b76a3809bbf7d1a83b:unit_tests_pass:3b93e2a20c8a",
+          "ms": 18653
+        },
+        "style_check_passes": {
+          "status": "passed",
+          "at": "2026-11-09T13:16:27.254Z",
+          "key": "b54d07e7bb2d7dc0e3aa9928d228390aa40799f851f508b76a3809bbf7d1a83b:style_check_passes:fadedb125b69",
+          "ms": 713
+        },
+        "pages_load": {
+          "status": "pending",
+          "at": "2026-11-09T13:17:49.862Z",
+          "summary": "Your app is not running, so its pages were not opened."
+        }
+      },
+      "workFrom": "1599d07ff38f50c858047e5b3fcc50dd42a7f7b7632c588af5daa672287e5c26",
+      "tasks": [
+        {
+          "task": "Phase 1a: members foundation",
+          "state": "finished"
+        },
+        {
+          "task": "Phase 1b: gate screens and shell",
+          "state": "finished"
+        },
+        {
+          "task": "Phase 1c: Staff screen",
+          "state": "finished"
+        },
+        {
+          "task": "Phase 2a: Plan the week",
+          "state": "finished"
+        }
+      ],
+      "worked": true
+    },
+    {
+      "id": "phase-2",
+      "title": "The rest of the features",
+      "agent": "builder",
+      "alsoBy": [
+        "ui-designer"
+      ],
+      "gates": [
+        "typecheck_passes",
+        "unit_tests_pass",
+        "style_check_passes",
+        "pages_load"
+      ],
+      "needsAgent": true,
+      "stage": "build",
+      "message": "Phase 2 of 3: The rest of the features\n\nEach one finished before the next one starts, so the app is never half-broken.\n\nWhen this phase is finished, the person who owns this project should be able\nto open the app and see something that was not there before. Please work\ntowards that rather than towards a complete data model.\n\nThis is a working prototype: the main journey has to really work, end to\nend, on the real database, with real sign-in where the idea has one.\nSample rows to start from are fine; faking what the journey depends on is not.\nPolish, rare cases and nice-to-haves can wait.\n\nThis project already has these ready-made parts installed. Use them rather\nthan writing your own, and do not edit inside their folders:\n\n- **Signing in** — `src/components/auth`\n- **The screens people sign in on** — `src/components/auth_screens`\n- **A list people can sort and search** — `src/components/data_table`\n- **I forgot my password** — `src/components/password_reset`\n- **Database foundation** — `src/components/postgres_schema`\n- **Emailing your users** — `src/components/transactional_email`\n- **The screens every app starts with** — `src/components/ui_blocks`\n- **How the app looks** — `src/components/ui_foundation`\n\nIf one of them is genuinely wrong for what is being asked, say so rather than\nworking around it.\n\nLeave the app running at the end. If you cannot, say what is broken rather\nthan leaving it for the owner to discover.\n\nUse the builder helper for the code and the ui-designer helper for the screens, each screen\nagainst DESIGN.md.",
+      "status": "blocked",
+      "agentSeen": "finished",
+      "results": {
+        "typecheck_passes": {
+          "status": "passed",
+          "at": "2026-11-09T13:16:27.254Z",
+          "key": "b54d07e7bb2d7dc0e3aa9928d228390aa40799f851f508b76a3809bbf7d1a83b:typecheck_passes:7b87d722ef6a",
+          "ms": 2893
+        },
+        "unit_tests_pass": {
+          "status": "passed",
+          "at": "2026-11-09T13:16:27.254Z",
+          "key": "b54d07e7bb2d7dc0e3aa9928d228390aa40799f851f508b76a3809bbf7d1a83b:unit_tests_pass:3b93e2a20c8a",
+          "ms": 18653
+        },
+        "style_check_passes": {
+          "status": "passed",
+          "at": "2026-11-09T13:16:27.254Z",
+          "key": "b54d07e7bb2d7dc0e3aa9928d228390aa40799f851f508b76a3809bbf7d1a83b:style_check_passes:fadedb125b69",
+          "ms": 713
+        },
+        "pages_load": {
+          "status": "pending",
+          "at": "2026-11-09T13:17:49.862Z",
+          "summary": "Your app is not running, so its pages were not opened."
+        }
+      },
+      "workFrom": "3d6b654060ef879686bb9935ad15edda7cffad5d3339947c53c2fe0739ac0bda",
+      "tasks": [
+        {
+          "task": "Phase 2b: My shifts screen",
+          "state": "finished"
+        },
+        {
+          "task": "Phase 2c: swap requests",
+          "state": "finished"
+        }
+      ],
+      "worked": true
+    },
+    {
+      "id": "phase-3",
+      "title": "Show it to someone",
+      "agent": "builder",
+      "alsoBy": [
+        "ui-designer"
+      ],
+      "gates": [
+        "typecheck_passes",
+        "unit_tests_pass",
+        "style_check_passes",
+        "pages_load"
+      ],
+      "needsAgent": true,
+      "stage": "build",
+      "message": "Phase 3 of 3: Show it to someone\n\nA private link you can send. The information is real, and so is sign-in if your app has it, but nothing is backed up, so do not put anything in it you cannot lose.\n\nWhen this phase is finished, the person who owns this project should be able\nto open the app and see something that was not there before. Please work\ntowards that rather than towards a complete data model.\n\nThis is a working prototype: the main journey has to really work, end to\nend, on the real database, with real sign-in where the idea has one.\nSample rows to start from are fine; faking what the journey depends on is not.\nPolish, rare cases and nice-to-haves can wait.\n\nThis project already has these ready-made parts installed. Use them rather\nthan writing your own, and do not edit inside their folders:\n\n- **Signing in** — `src/components/auth`\n- **The screens people sign in on** — `src/components/auth_screens`\n- **A list people can sort and search** — `src/components/data_table`\n- **I forgot my password** — `src/components/password_reset`\n- **Database foundation** — `src/components/postgres_schema`\n- **Emailing your users** — `src/components/transactional_email`\n- **The screens every app starts with** — `src/components/ui_blocks`\n- **How the app looks** — `src/components/ui_foundation`\n\nIf one of them is genuinely wrong for what is being asked, say so rather than\nworking around it.\n\nLeave the app running at the end. If you cannot, say what is broken rather\nthan leaving it for the owner to discover.\n\nUse the builder helper for the code and the ui-designer helper for the screens, each screen\nagainst DESIGN.md.",
+      "status": "blocked",
+      "agentSeen": "finished",
+      "results": {
+        "typecheck_passes": {
+          "status": "passed",
+          "at": "2026-11-09T13:16:27.254Z",
+          "key": "b54d07e7bb2d7dc0e3aa9928d228390aa40799f851f508b76a3809bbf7d1a83b:typecheck_passes:7b87d722ef6a",
+          "ms": 2893
+        },
+        "unit_tests_pass": {
+          "status": "passed",
+          "at": "2026-11-09T13:16:27.254Z",
+          "key": "b54d07e7bb2d7dc0e3aa9928d228390aa40799f851f508b76a3809bbf7d1a83b:unit_tests_pass:3b93e2a20c8a",
+          "ms": 18653
+        },
+        "style_check_passes": {
+          "status": "passed",
+          "at": "2026-11-09T13:16:27.254Z",
+          "key": "b54d07e7bb2d7dc0e3aa9928d228390aa40799f851f508b76a3809bbf7d1a83b:style_check_passes:fadedb125b69",
+          "ms": 713
+        },
+        "pages_load": {
+          "status": "pending",
+          "at": "2026-11-09T13:17:49.862Z",
+          "summary": "Your app is not running, so its pages were not opened."
+        }
+      },
+      "workFrom": "7e19293bb91d689bca25f7084df0f4e29c76a86504df97d6a3c807073a2a6332",
+      "tasks": [
+        {
+          "task": "Phase 3: show it to someone",
+          "state": "finished"
+        }
+      ],
+      "worked": true
+    },
+    {
+      "id": "tests",
+      "title": "Write the browser checks for the core flows",
+      "agent": "test-engineer",
+      "gates": [
+        "core_flow_smoke_test",
+        "core_flow_specs_present"
+      ],
+      "needsAgent": true,
+      "stage": "launch",
+      "message": "Use the test-engineer helper. Beside e2e/smoke.spec.ts, add or update one Playwright spec per\ncore flow in IDEA.md and the screens in DESIGN.md: what a person does, step by step, and what\nthey should see. They run on Shipyard's test copy of the app, which has its own database\n(.shipyard/check-server.json), never on the founder's app; do not start a server. Each check\ncreates the data it needs and never relies on data another check left behind. While you work,\nrun only the specs you write, one file at a time: npx playwright test e2e/<file>.spec.ts.\nShipyard runs the whole suite when this turn ends. A failing check is a finding: report it, do\nnot weaken the check.",
+      "status": "waiting",
+      "agentSeen": "never",
+      "results": {}
+    },
+    {
+      "id": "browser-check",
+      "title": "Walk the app in a browser",
+      "agent": "browser-qa",
+      "gates": [
+        "core_flow_smoke_test",
+        "core_flow_specs_present"
+      ],
+      "needsAgent": true,
+      "stage": "launch",
+      "message": "Use the browser-qa helper. It runs the browser checks one spec file at a time against the app\nShipyard is running, reads the screenshots in test-results/, and reports what is actually on screen, worst first. It\nchanges nothing. If it finds problems, use the fixer helper for each one, then run the checks\nagain.",
+      "status": "waiting",
+      "agentSeen": "never",
+      "results": {}
+    },
+    {
+      "id": "security",
+      "title": "Security review",
+      "agent": "security-reviewer",
+      "gates": [
+        "build_passes"
+      ],
+      "needsAgent": true,
+      "stage": "launch",
+      "message": "Use the security-reviewer helper on what was built: input validation, what each screen and\nroute lets a person see and change, secrets, and anything that reads the database. Report\nfindings in plain words, worst first; use the fixer helper for anything that must change.",
+      "status": "waiting",
+      "agentSeen": "never",
+      "results": {}
+    }
+  ],
+  "helpers": [
+    {
+      "name": "ui-designer",
+      "task": "Complete DESIGN.md blueprint",
+      "state": "running",
+      "at": "2026-11-09T12:36:58.052Z"
+    },
+    {
+      "name": "ui-designer",
+      "task": "Complete DESIGN.md blueprint",
+      "state": "finished",
+      "at": "2026-11-09T12:38:23.841Z"
+    },
+    {
+      "name": "architect",
+      "task": "Plan data and screens",
+      "state": "running",
+      "at": "2026-11-09T12:38:38.801Z"
+    },
+    {
+      "name": "architect",
+      "task": "Plan data and screens",
+      "state": "finished",
+      "at": "2026-11-09T12:40:56.856Z"
+    },
+    {
+      "name": "builder",
+      "task": "Phase 1a: members foundation",
+      "state": "running",
+      "at": "2026-11-09T12:41:16.958Z"
+    },
+    {
+      "name": "builder",
+      "task": "Phase 1a: members foundation",
+      "state": "finished",
+      "at": "2026-11-09T12:45:17.201Z"
+    },
+    {
+      "name": "builder",
+      "task": "Phase 1b: gate screens and shell",
+      "state": "running",
+      "at": "2026-11-09T12:45:35.034Z"
+    },
+    {
+      "name": "builder",
+      "task": "Phase 1b: gate screens and shell",
+      "state": "finished",
+      "at": "2026-11-09T12:48:52.220Z"
+    },
+    {
+      "name": "builder",
+      "task": "Phase 1c: Staff screen",
+      "state": "running",
+      "at": "2026-11-09T12:49:05.172Z"
+    },
+    {
+      "name": "builder",
+      "task": "Phase 1c: Staff screen",
+      "state": "finished",
+      "at": "2026-11-09T12:54:12.713Z"
+    },
+    {
+      "name": "builder",
+      "task": "Phase 2a: Plan the week",
+      "state": "running",
+      "at": "2026-11-09T12:54:42.169Z"
+    },
+    {
+      "name": "builder",
+      "task": "Phase 2a: Plan the week",
+      "state": "finished",
+      "at": "2026-11-09T13:01:08.819Z"
+    },
+    {
+      "name": "builder",
+      "task": "Phase 2b: My shifts screen",
+      "state": "running",
+      "at": "2026-11-09T13:01:35.183Z"
+    },
+    {
+      "name": "builder",
+      "task": "Phase 2b: My shifts screen",
+      "state": "finished",
+      "at": "2026-11-09T13:04:00.350Z"
+    },
+    {
+      "name": "builder",
+      "task": "Phase 2c: swap requests",
+      "state": "running",
+      "at": "2026-11-09T13:04:16.279Z"
+    },
+    {
+      "name": "builder",
+      "task": "Phase 2c: swap requests",
+      "state": "finished",
+      "at": "2026-11-09T13:11:16.821Z"
+    },
+    {
+      "name": "builder",
+      "task": "Phase 3: show it to someone",
+      "state": "running",
+      "at": "2026-11-09T13:12:15.379Z"
+    },
+    {
+      "name": "builder",
+      "task": "Phase 3: show it to someone",
+      "state": "finished",
+      "at": "2026-11-09T13:15:12.222Z"
+    }
+  ],
+  "claimsStamp": "b54d07e7bb2d7dc0e3aa9928d228390aa40799f851f508b76a3809bbf7d1a83b"
+}

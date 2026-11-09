@@ -1,0 +1,168 @@
+/* DESIGN.md section 4, My shifts. Only theme variables: no colour, radius or step by hand. */
+
+/* Phone first: one column, which stays narrow on a desktop rather than becoming a grid. */
+.my-shifts {
+  display: grid;
+  gap: calc(var(--space) * 4);
+  max-width: 36rem;
+}
+
+.my-shifts h1 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.my-shifts-week {
+  display: grid;
+  gap: calc(var(--space) * 2);
+}
+
+.my-shifts-week-label,
+.my-shift-label {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.my-shifts-list {
+  display: grid;
+  gap: calc(var(--space) * 2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.my-shift {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--space) * 2);
+  padding: calc(var(--space) * 3) calc(var(--space) * 4);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--fg);
+}
+
+.my-shift p {
+  margin: 0;
+}
+
+/* Long words never push the card wider than the phone. */
+.my-shift-day,
+.my-shift-next-day {
+  overflow-wrap: anywhere;
+}
+
+.my-shift-times,
+.my-shift-next-times {
+  font-variant-numeric: tabular-nums;
+}
+
+.my-shift-times {
+  color: var(--muted);
+}
+
+.my-shift-next {
+  display: grid;
+  justify-content: stretch;
+  gap: calc(var(--space) * 1);
+  padding: calc(var(--space) * 4);
+  border: 2px solid var(--accent);
+}
+
+.my-shift-next-day,
+.my-shift-next-times {
+  font-size: 1.25em;
+  font-weight: 600;
+}
+
+.my-shift-action {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--space) * 2);
+}
+
+.my-shifts-empty {
+  margin: 0;
+  padding: calc(var(--space) * 4);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.my-shifts-state {
+  display: grid;
+  justify-items: start;
+  gap: calc(var(--space) * 3);
+}
+
+.my-shifts-state p {
+  margin: 0;
+}
+
+/* Swaps: the Ask to swap form and My swap requests. */
+.my-shifts-form {
+  display: grid;
+  gap: calc(var(--space) * 4);
+}
+
+.my-shifts-form p {
+  margin: 0;
+}
+
+.my-shifts-field {
+  display: grid;
+  gap: calc(var(--space) * 1);
+}
+
+.my-shifts-field select {
+  font: inherit;
+  padding: calc(var(--space) * 2) calc(var(--space) * 3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.my-shifts-field select:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.my-shifts-field select[aria-invalid="true"] {
+  border-color: var(--danger-fg);
+  border-width: 2px;
+}
+
+.my-shifts-error {
+  padding: calc(var(--space) * 2) calc(var(--space) * 3);
+  border-radius: var(--radius);
+  background: var(--danger);
+  color: var(--danger-fg);
+  font-size: 0.875em;
+}
+
+.my-swaps,
+.my-swaps-list {
+  display: grid;
+  gap: calc(var(--space) * 2);
+}
+
+.my-swaps-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.my-swap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--space) * 2);
+  padding: calc(var(--space) * 2) 0;
+  border-bottom: 1px solid var(--line);
+  overflow-wrap: anywhere;
+}

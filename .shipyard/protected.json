@@ -1,0 +1,209 @@
+{
+  "version": 1,
+  "paths": {
+    "src/app/api/health/route.ts": {
+      "componentId": "postgres_schema",
+      "sha256": "406f297d2f825f928f9b8d887fc5415bf9da781ad1d44479534245829be8b85b"
+    },
+    "src/components/postgres_schema/db.ts": {
+      "componentId": "postgres_schema",
+      "sha256": "882557aa1fa030b7fe78250eaa9a1a207eb57bb59c4e1d5d380f7d573adbd074"
+    },
+    "tests/contracts/postgres_schema.test.ts": {
+      "componentId": "postgres_schema",
+      "sha256": "6cc23cbf51307469401f9bf5398406df34e14bde08deae6736a0a51b1efb23af"
+    },
+    "src/app/api/auth/login/route.ts": {
+      "componentId": "auth",
+      "sha256": "e6dd274d630cc507e778f67717e99c806974106ef922b1303bce69632b3723cd"
+    },
+    "src/app/api/auth/logout/route.ts": {
+      "componentId": "auth",
+      "sha256": "063aecb2e6e17412f47923a33a4f58b8c07358a108c3cd959f70d76798af2b24"
+    },
+    "src/app/api/auth/me/route.ts": {
+      "componentId": "auth",
+      "sha256": "2596440c14f1d1320a2009932c74caec7733448890d3d8dd41af5de338287bb1"
+    },
+    "src/app/api/auth/register/route.ts": {
+      "componentId": "auth",
+      "sha256": "17ca06cbf466e261c36ea09e4a4e14b803438f3c67f860d694c5783f09dc9822"
+    },
+    "src/components/auth/current-user.ts": {
+      "componentId": "auth",
+      "sha256": "d6aa41dbc63338c93ebdcd7c31b91ffb34f825f3bb7d1e2e802992cf6b4bab2a"
+    },
+    "src/components/auth/lockout.ts": {
+      "componentId": "auth",
+      "sha256": "096404df3a5a5f52cbbdd61ed547501a57330140f338b0f25b081d1e537333bf"
+    },
+    "src/components/auth/password.ts": {
+      "componentId": "auth",
+      "sha256": "08c0c7ff50c49bb76b3ce406e6905e176f884377b1a2789d3477a64de90cbc80"
+    },
+    "src/components/auth/session.ts": {
+      "componentId": "auth",
+      "sha256": "c1c60b5fcf932c80c31cbdd7369e8434de92ae92ae76f394a70acdec40cd5c08"
+    },
+    "src/seams/auth.ts": {
+      "componentId": "auth",
+      "sha256": "9b8cc0748df7f3fc484ece18f78a235bf7e09382758984c4cdb60a99494c2b84"
+    },
+    "tests/contracts/auth.test.ts": {
+      "componentId": "auth",
+      "sha256": "44ffa349c8880d379d634755ad4a31961bec9afaa73247c38013a6b08404af57"
+    },
+    "src/components/transactional_email/email.ts": {
+      "componentId": "transactional_email",
+      "sha256": "63334504d395b55e1490b8b7c356cc3734e9a23cc586163c22c312bcd2c979c9"
+    },
+    "src/components/transactional_email/providers.ts": {
+      "componentId": "transactional_email",
+      "sha256": "d4f498ba35f314c61a18877472a1c0099c37db2c8b2526f203bb22efc4d3e48e"
+    },
+    "src/seams/email.ts": {
+      "componentId": "transactional_email",
+      "sha256": "a5727a0f7f6d7377af44c0196dbb3d4e4c935d1926a1eb25d754da989ede7f1e"
+    },
+    "tests/contracts/transactional_email.test.ts": {
+      "componentId": "transactional_email",
+      "sha256": "20263b6a429abfa104c8aa305823c1379e3fe7872910a26e7f39d210f592046b"
+    },
+    "src/app/api/auth/password-reset/confirm/route.ts": {
+      "componentId": "password_reset",
+      "sha256": "f83bfa14fa53cc7c8f2d92b5c6b56c57ccc7e5f37080273866f3e5e24355bcdf"
+    },
+    "src/app/api/auth/password-reset/request/route.ts": {
+      "componentId": "password_reset",
+      "sha256": "92d2543d8036d34a826bb04ce33998af2298dbd388a49db015804de901fa584e"
+    },
+    "src/components/password_reset/reset-email.ts": {
+      "componentId": "password_reset",
+      "sha256": "10eaf593ab2ec4426e5162d16add7d92843e0ef1a79ed505c270c70f8d2f022b"
+    },
+    "src/components/password_reset/tokens.ts": {
+      "componentId": "password_reset",
+      "sha256": "1d32785bdddc38341921a05963fbd406b6d46860bc427b2fc47d859e0552655d"
+    },
+    "tests/contracts/password_reset.test.ts": {
+      "componentId": "password_reset",
+      "sha256": "33b085fdd7aabc9e775bd6a6c96c7d5a7b02f9a91a74f230477a41bf3592098a"
+    },
+    "tests/contracts/password_reset_routes.test.ts": {
+      "componentId": "password_reset",
+      "sha256": "3dcc385a99000363166081443b04e17b6bef53f4f400b57835f8008263abd8d7"
+    },
+    "src/components/ui_foundation/Button.tsx": {
+      "componentId": "ui_foundation",
+      "sha256": "42a9c39a3942bb0b025a79883cc033ea8ef8f8ae24af6e27658fe30c1c85e33e"
+    },
+    "src/components/ui_foundation/Status.tsx": {
+      "componentId": "ui_foundation",
+      "sha256": "2750ed0aa1a85c5fdd27ec316e5de8fdb7200d895b4291cb9913b95d59c26f64"
+    },
+    "src/components/ui_foundation/Styles.tsx": {
+      "componentId": "ui_foundation",
+      "sha256": "b13d57fc8d831dd23d31c57cb6fbcf03ea39cd77a2ef03fb1278c453ff5a5141"
+    },
+    "src/components/ui_foundation/VisuallyHidden.tsx": {
+      "componentId": "ui_foundation",
+      "sha256": "57409d034ccc2847e10db72eafa95f003941227c4289e3b92b4c6f4b274b934a"
+    },
+    "src/components/ui_foundation/contrast.ts": {
+      "componentId": "ui_foundation",
+      "sha256": "cbab1bec2f742fafa4e5960e04fea0d596aae214c73f39804b232633552e3f04"
+    },
+    "src/components/ui_foundation/merge.ts": {
+      "componentId": "ui_foundation",
+      "sha256": "c8ddfc96951011d5af335f091c5f7d9c76ec64949c4bfd218addcf4d7453fd32"
+    },
+    "src/components/ui_foundation/primitives.ts": {
+      "componentId": "ui_foundation",
+      "sha256": "c646f70eb824e85f49282ba815b4a5a5a9d1bff6361607743334f84c1f21d77e"
+    },
+    "src/components/ui_foundation/tokens.ts": {
+      "componentId": "ui_foundation",
+      "sha256": "0b523644a8b4e20c75854cc14d37db46edd223b8d2e7605858d30f899768e7cf"
+    },
+    "src/seams/theme.ts": {
+      "componentId": "ui_foundation",
+      "sha256": "f50fe7b0663ad91d272759bd9d3b099fe81f58177cea61ffa88c672743f76108"
+    },
+    "tests/contracts/ui_foundation.test.ts": {
+      "componentId": "ui_foundation",
+      "sha256": "61f210edfce1253758461b28a0fef2d3247dca5b4f93a4495e0682960c45e030"
+    },
+    "src/components/ui_blocks/AppShell.tsx": {
+      "componentId": "ui_blocks",
+      "sha256": "2d5bfbc3e8cb8973d3b3e8a6c69b8f86fcb6ae7c527b5b70e5f90db50b5aa5ea"
+    },
+    "src/components/ui_blocks/Dialog.tsx": {
+      "componentId": "ui_blocks",
+      "sha256": "e9b6d39fc6f675cafc4382c7b7168f081252c5d5787218e934110cfc3b90d149"
+    },
+    "src/components/ui_blocks/SignInForm.tsx": {
+      "componentId": "ui_blocks",
+      "sha256": "1815e0ef1eecc0c7d02f78bf22c0ef408af033fbdcd43c8b5be1d96ac9a868d7"
+    },
+    "src/components/ui_blocks/StatGrid.tsx": {
+      "componentId": "ui_blocks",
+      "sha256": "d706471350f1ad2076461a2cb4521df35b1ff2aba727e6fef92818f394567a82"
+    },
+    "src/components/ui_blocks/Toasts.tsx": {
+      "componentId": "ui_blocks",
+      "sha256": "a6d2703c9bf2a3fb112d51f10bfe3a69a7c9b2d93df7a800b6ec469e092e7ee1"
+    },
+    "src/components/ui_blocks/blocks.css": {
+      "componentId": "ui_blocks",
+      "sha256": "663336b0c2804edec35e7b680d27c91e41232a0adefc779aa480d210a5f36571"
+    },
+    "src/components/ui_blocks/blocks.ts": {
+      "componentId": "ui_blocks",
+      "sha256": "b8c6e7358dd838106e2b1667a92d02d895bbd81567dbf2b366a99c64e8b92bad"
+    },
+    "tests/contracts/ui_blocks.test.ts": {
+      "componentId": "ui_blocks",
+      "sha256": "a7b9a3fed28bdf3e24c15840ad0805678ed14307ffc7bb00d4cade10f5735a69"
+    },
+    "src/app/forgot-password/page.tsx": {
+      "componentId": "auth_screens",
+      "sha256": "5f9aa73a42346200adb4754f081485e242cff89dd92381da5bdcbdd427fe838a"
+    },
+    "src/app/register/page.tsx": {
+      "componentId": "auth_screens",
+      "sha256": "fa1cc526020033987b9be38608943bc432d295cf2b6ff0eb3b48b7a1aa7030f6"
+    },
+    "src/app/reset-password/page.tsx": {
+      "componentId": "auth_screens",
+      "sha256": "91599c4763d446d7e22b34c086b742422c14e843e037d7768d9530a9a1b9460c"
+    },
+    "src/app/sign-in/page.tsx": {
+      "componentId": "auth_screens",
+      "sha256": "1842f7b585bfada6148a501efc39875c435fb56ee85989869f18345ec21372ce"
+    },
+    "src/components/auth_screens/messages.ts": {
+      "componentId": "auth_screens",
+      "sha256": "61f35d1bb9df47cbfa25ca415e1396827813e6b15fe02c5fd09eae2ea591b8b8"
+    },
+    "src/components/auth_screens/redirect.ts": {
+      "componentId": "auth_screens",
+      "sha256": "52300e481e850c96a6051ddfd5ecc7694ee4b0e5674c5aa415933b1356fa59cc"
+    },
+    "tests/contracts/auth_screens.test.ts": {
+      "componentId": "auth_screens",
+      "sha256": "4ebd6a020c3dd60ebc1ee72332fcee6dab5f8c02ddf40b3873df0e9483ed8983"
+    },
+    "src/components/data_table/DataTable.tsx": {
+      "componentId": "data_table",
+      "sha256": "49e122c7afc787ab01f8e87c9ad0cf3df6c4d6c5cc7f3501fe2535dd3b3153d6"
+    },
+    "src/components/data_table/table.ts": {
+      "componentId": "data_table",
+      "sha256": "465affebaaaa63e8d03c3c28f7c6fbfaa965635fbeac7cd4bee161172aa4c272"
+    },
+    "tests/contracts/data_table.test.ts": {
+      "componentId": "data_table",
+      "sha256": "fa58d1134fd60a4e85951565b3837affa8af6cba93f087e848a80bb8f33f1b46"
+    }
+  }
+}

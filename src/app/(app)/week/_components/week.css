@@ -1,0 +1,127 @@
+/* DESIGN.md section 2, Plan the week. Only theme variables: no colour, radius or step by hand. */
+
+.week {
+  max-width: 60rem;
+}
+
+.week-head {
+  display: grid;
+  gap: calc(var(--space) * 3);
+  margin-bottom: calc(var(--space) * 4);
+}
+
+.week-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--space) * 3);
+}
+
+.week-title h1 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.week-actions,
+.week-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--space) * 2);
+}
+
+.week-label {
+  margin: 0;
+  font-weight: 600;
+}
+
+.week-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.875em;
+}
+
+.week-empty {
+  display: grid;
+  justify-items: start;
+  gap: calc(var(--space) * 3);
+  padding: calc(var(--space) * 4);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.week-empty p,
+.week-state p {
+  margin: 0;
+}
+
+.week-empty a {
+  color: var(--accent);
+}
+
+.week-empty a:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.week-state {
+  display: grid;
+  justify-items: start;
+  gap: calc(var(--space) * 3);
+}
+
+/* On a phone the table scrolls sideways in its own box; the header does not. */
+.week-table {
+  overflow-x: auto;
+}
+
+/* Long names end in an ellipsis; the full name is in the title. */
+.week-truncate {
+  display: block;
+  max-width: 18rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.week-form {
+  display: grid;
+  gap: calc(var(--space) * 4);
+}
+
+.week-field {
+  display: grid;
+  gap: calc(var(--space) * 1);
+}
+
+.week-field input,
+.week-field select {
+  font: inherit;
+  padding: calc(var(--space) * 2) calc(var(--space) * 3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.week-field input:focus-visible,
+.week-field select:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.week-field [aria-invalid='true'] {
+  border-color: var(--danger-fg);
+  border-width: 2px;
+}
+
+.week-error {
+  margin: 0;
+  padding: calc(var(--space) * 2) calc(var(--space) * 3);
+  border-radius: var(--radius);
+  background: var(--danger);
+  color: var(--danger-fg);
+  font-size: 0.875em;
+}

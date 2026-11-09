@@ -1,0 +1,76 @@
+/*
+ * The base every page shares, and nothing more.
+ *
+ * Every value reads the theme first (ui_foundation puts it on the page through
+ * src/seams/theme.ts: --bg, --surface, --fg, --muted, --line, --accent, --focus,
+ * --radius, --space, --font-family, --font-size, --line-height) and falls back
+ * to a plain light look when no theme is installed yet. This file defines no
+ * colours of its own on :root: two stylesheets setting the same variables is
+ * how a page ends up in neither design. Page layout belongs to each page and to
+ * DESIGN.md, not to a narrow column here.
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg, #ffffff);
+  color: var(--fg, #14181f);
+  font-family: var(--font-family, system-ui, -apple-system, 'Segoe UI', sans-serif);
+  font-size: var(--font-size, 16px);
+  line-height: var(--line-height, 1.6);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--fg, #14181f);
+  line-height: 1.25;
+  margin: 0 0 calc(var(--space, 0.25rem) * 3);
+}
+
+h1 {
+  font-size: 1.75rem;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: 1.375rem;
+}
+
+h3 {
+  font-size: 1.125rem;
+}
+
+p {
+  margin: 0 0 calc(var(--space, 0.25rem) * 4);
+}
+
+a {
+  color: var(--accent, #0b5fd7);
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: var(--space, 0.25rem);
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  background: var(--bg, #ffffff);
+  border: 1px solid var(--line, #c4cbd4);
+  border-radius: var(--radius, 0.5rem);
+  padding: calc(var(--space, 0.25rem) * 2) calc(var(--space, 0.25rem) * 3);
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus, #0b5fd7);
+  outline-offset: 2px;
+}

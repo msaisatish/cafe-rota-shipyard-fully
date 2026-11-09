@@ -1,0 +1,59 @@
+/*
+ * DESIGN.md "Frame": a top bar and one row of links, no sidebar. The links wrap
+ * to a second row on a phone rather than hiding behind a menu button.
+ */
+
+.rota-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--space) * 2);
+  padding: calc(var(--space) * 3) calc(var(--space) * 4);
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.rota-name {
+  font-weight: 600;
+}
+
+.rota-signout {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--space) * 2);
+}
+
+.rota-frame .blk-shell {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  min-height: auto;
+}
+
+.rota-frame .blk-shell-nav {
+  border-right: none;
+  border-bottom: 1px solid var(--line);
+  padding: calc(var(--space) * 2) calc(var(--space) * 4);
+}
+
+.rota-frame .blk-shell-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--space) * 2);
+}
+
+.rota-frame .blk-nav-link {
+  border-left: none;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+}
+
+.rota-frame .blk-nav-link.is-current {
+  background: none;
+  border-bottom-color: var(--accent);
+  text-decoration: underline;
+}
+
+.rota-wrap {
+  overflow-wrap: anywhere;
+}
